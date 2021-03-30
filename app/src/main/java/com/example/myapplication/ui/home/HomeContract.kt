@@ -1,14 +1,16 @@
-package com.example.myapplication.ui
+package com.example.myapplication.ui.home
 
-interface BaseContract {
+import com.example.myapplication.utils.core.ui.BaseContract
 
-    interface View {
+interface HomeContract {
+
+    interface View : BaseContract.View {
         fun setItems()
         fun initView()
         fun updateItem()
     }
 
-    interface Presenter {
+    interface Presenter : BaseContract.Presenter {
         fun init()
         fun onLogoClick()
         fun onCameraClick()
