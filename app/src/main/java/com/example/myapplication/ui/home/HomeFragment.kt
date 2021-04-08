@@ -1,6 +1,7 @@
 package com.example.myapplication.ui.home
 
 import android.os.Bundle
+import android.provider.ContactsContract
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -8,25 +9,26 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
+import com.example.myapplication.ui.home.model.Comment
+import com.example.myapplication.ui.home.model.PostedItem
+import com.example.myapplication.ui.home.model.UserProfile
 import com.example.myapplication.ui.home.recycler.PostedImageAdapter
 import kotlinx.android.synthetic.main.fragment_main.*
 
 class HomeFragment : Fragment(), HomeContract.View {
-
-   var postedImageAdapter: PostedImageAdapter = PostedImageAdapter(
-
-   )
-
-    var presenter: HomeContract.Presenter =
-        HomePresenter(this)
 
     companion object {
         @JvmStatic
         fun newInstance() =
             HomeFragment()
 
-        const val IDENT = "MainFragment"
+        const val IDENT = "HomeFragment"
     }
+
+    var postedImageAdapter: PostedImageAdapter = PostedImageAdapter()
+
+    var presenter: HomeContract.Presenter =
+        HomePresenter(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,10 +45,39 @@ class HomeFragment : Fragment(), HomeContract.View {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         presenter.init()
-        rvMainPosts.apply {
-            layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
-            adapter = postedImageAdapter
+        btLogo.setOnClickListener {
+            uploudData()
         }
+
+    }
+
+    fun uploudData() {
+        val listOfItems = listOf(
+            PostedItem(
+                profile = UserProfile(
+                    photoUri = "https://www.thispersondoesnotexist.com/image?21603152698",
+                    profileLink = "123",
+                    profileName = "zdrov",
+                    profilePhoto = "https://www.thispersondoesnotexist.com/image?21603152698"
+                ),
+                imageUri = "https://www.thispersondoesnotexist.com/image?21603152698",
+                likesCount = 1,
+                isLiked = true,
+                timeStamp = "123 years ago",
+                imageDescription = "zbs photo",
+                commentsList = listOf(
+                    Comment(
+                        profile = UserProfile(
+                            photoUri = "https://www.thispersondoesnotexist.com/image?21603152698",
+                            profileLink = "123",
+                            profileName = "zdrov",
+                            profilePhoto = "https://www.thispersondoesnotexist.com/image?21603152698"
+                        ), description = "nice"
+                    )
+                )
+            )
+        )
+        postedImageAdapter.postList = listOfItems
     }
 
 
@@ -59,7 +90,10 @@ class HomeFragment : Fragment(), HomeContract.View {
     }
 
     override fun initView() {
-        TODO("Not yet implemented")
+        rvMainPosts.apply {
+            layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+            adapter = postedImageAdapter
+        }
     }
 
     override fun updateItem() {

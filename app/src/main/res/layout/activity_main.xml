@@ -17,31 +17,37 @@
     <LinearLayout
         android:id="@+id/llNavigation"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="50dp"
         android:orientation="horizontal"
         android:weightSum="3"
         app:layout_constraintBottom_toBottomOf="parent">
 
+
         <ImageView
-            android:id="@+id/btFavorits"
+            android:id="@+id/btFavorite"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:layout_margin="5dp"
             android:layout_weight="1"
-            android:src="@drawable/ic_baseline_favorite_24" />
+            android:src="@drawable/ic_like" />
 
         <ImageView
             android:id="@+id/btHome"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:adjustViewBounds="true"
             android:layout_weight="1"
-            android:src="@drawable/ic_baseline_home_24" />
+            android:src="@drawable/ic_home" />
 
         <ImageView
             android:id="@+id/btProfile"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:adjustViewBounds="true"
             android:layout_weight="1"
-            android:src="@drawable/ic_baseline_profile_24" />
+            android:src="@drawable/ic_profile" />
 
 
     </LinearLayout>

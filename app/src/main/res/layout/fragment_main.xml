@@ -2,45 +2,51 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ui.home.HomeFragment">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/llToolbar"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="50dp"
         android:orientation="horizontal"
-        android:weightSum="3">
+        android:weightSum="7">
 
         <ImageView
             android:id="@+id/btMenu"
-            android:layout_width="wrap_content"
+            android:layout_width="10dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:src="@drawable/ic_baseline_menu_24" />
+            android:adjustViewBounds="true"
+            android:src="@drawable/ic_more" />
 
         <ImageView
             android:id="@+id/btLogo"
             android:layout_width="wrap_content"
-            android:layout_height="60dp"
-            android:layout_marginTop="20dp"
-            android:layout_weight="1"
-            android:src="@drawable/ic_baseline_logo_24" />
+            android:layout_height="55dp"
+            android:layout_weight="5"
+            android:adjustViewBounds="true"
+            android:src="@drawable/ic_logo" />
 
         <ImageView
             android:id="@+id/btCamera"
-            android:layout_width="wrap_content"
+            android:layout_width="10dp"
             android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
             android:layout_weight="1"
-            android:src="@drawable/ic_baseline_camera_alt_24" />
+            android:layout_margin="5dp"
+            android:layout_marginTop="5dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/ic_camera"
+            />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvMainPosts"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/rvMainPosts"
 
         />
 </LinearLayout>

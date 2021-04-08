@@ -13,7 +13,8 @@ data class PostedItem(
 data class UserProfile(
     val photoUri: String,
     val profileLink: String,
-    val name: String
+    val profileName: String,
+    val profilePhoto: String
 )
 
 data class Comment(

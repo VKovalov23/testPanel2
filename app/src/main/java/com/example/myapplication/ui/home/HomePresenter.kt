@@ -9,6 +9,7 @@ class HomePresenter(private val mainFragment: HomeContract.View) :
     }
 
     override fun init() {
+        mainFragment.initView()
     }
 
     override fun onLogoClick() {
