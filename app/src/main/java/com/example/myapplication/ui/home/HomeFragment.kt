@@ -56,20 +56,20 @@ class HomeFragment : Fragment(), HomeContract.View {
                 profile = UserProfile(
                     photoUri = "https://www.thispersondoesnotexist.com/image?21603152698",
                     profileLink = "123",
-                    profileName = "zdrov",
+                    profileName = "Random Human ",
                     profilePhoto = "https://www.thispersondoesnotexist.com/image?21603152698"
                 ),
                 imageUri = "https://www.thispersondoesnotexist.com/image?21603152698",
                 likesCount = 1,
                 isLiked = true,
                 timeStamp = "123 years ago",
-                imageDescription = "zbs photo",
+                imageDescription = "nice photo",
                 comments = listOf(
                     Comment(
                         profile = UserProfile(
                             photoUri = "https://www.thispersondoesnotexist.com/image?21603152698",
                             profileLink = "123",
-                            profileName = "zdrov",
+                            profileName = "Random Human",
                             profilePhoto = "https://www.thispersondoesnotexist.com/image?21603152698"
                         ),
                         description = "nice",

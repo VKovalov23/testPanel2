@@ -7,7 +7,7 @@ data class PostedItem(
     val likesCount: Int,
     val isLiked: Boolean,
     val timeStamp: String,
-    val imageDescription: String
+    val title: String
 )
 
 data class UserProfile(
