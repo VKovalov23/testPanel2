@@ -3,7 +3,7 @@ package com.example.myapplication.ui.home.model
 data class PostedItem(
     val profile: UserProfile,
     val imageUri: String,
-    val commentsList: List<Comment>,
+    val comments: List<Comment>,
     val likesCount: Int,
     val isLiked: Boolean,
     val timeStamp: String,
@@ -19,5 +19,6 @@ data class UserProfile(
 
 data class Comment(
     val profile: UserProfile,
-    val description: String
+    val description: String,
+    val commentTimeStamp: String
 )

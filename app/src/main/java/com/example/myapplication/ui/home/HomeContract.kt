@@ -5,8 +5,8 @@ import com.example.myapplication.utils.core.ui.BaseContract
 interface HomeContract {
 
     interface View : BaseContract.View {
-        fun setItems()
         fun initView()
+        fun setItems()
         fun updateItem()
     }
 

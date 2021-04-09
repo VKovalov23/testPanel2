@@ -1,6 +1,8 @@
 package com.example.myapplication.ui.home
 
-class HomePresenter(private val mainFragment: HomeContract.View) :
+import android.view.View
+
+class HomePresenter(private val view: HomeContract.View) :
     HomeContract.Presenter {
 
 
@@ -9,7 +11,7 @@ class HomePresenter(private val mainFragment: HomeContract.View) :
     }
 
     override fun init() {
-        mainFragment.initView()
+        view.initView()
     }
 
     override fun onLogoClick() {

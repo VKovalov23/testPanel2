@@ -1,7 +1,6 @@
 package com.example.myapplication.ui.home
 
 import android.os.Bundle
-import android.provider.ContactsContract
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,7 +12,7 @@ import com.example.myapplication.ui.home.model.Comment
 import com.example.myapplication.ui.home.model.PostedItem
 import com.example.myapplication.ui.home.model.UserProfile
 import com.example.myapplication.ui.home.recycler.PostedImageAdapter
-import kotlinx.android.synthetic.main.fragment_main.*
+import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment(), HomeContract.View {
 
@@ -39,7 +38,7 @@ class HomeFragment : Fragment(), HomeContract.View {
         savedInstanceState: Bundle?
     ): View? {
 
-        return inflater.inflate(R.layout.fragment_main, container, false)
+        return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -65,14 +64,17 @@ class HomeFragment : Fragment(), HomeContract.View {
                 isLiked = true,
                 timeStamp = "123 years ago",
                 imageDescription = "zbs photo",
-                commentsList = listOf(
+                comments = listOf(
                     Comment(
                         profile = UserProfile(
                             photoUri = "https://www.thispersondoesnotexist.com/image?21603152698",
                             profileLink = "123",
                             profileName = "zdrov",
                             profilePhoto = "https://www.thispersondoesnotexist.com/image?21603152698"
-                        ), description = "nice"
+                        ),
+                        description = "nice",
+                        commentTimeStamp = "12:32"
+
                     )
                 )
             )
