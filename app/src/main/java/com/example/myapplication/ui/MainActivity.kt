@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction()
             .replace(
                 R.id.vgFragmentContent,
-                HomeFragment()
+                HomeFragment.newInstance()
             )
             .commit()
     }

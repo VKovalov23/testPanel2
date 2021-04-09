@@ -20,7 +20,6 @@ class HomeFragment : Fragment(), HomeContract.View {
         @JvmStatic
         fun newInstance() =
             HomeFragment()
-
         const val IDENT = "HomeFragment"
     }
 

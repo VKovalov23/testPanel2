@@ -52,7 +52,7 @@ class PostedImageViewHolder(
         containerView.tvBottomProfileName.setOnClickListener {
             action?.invoke(model.profile.profileLink)
         }
-        containerView.tvPhotoDescription.text = model.imageDescription
+        containerView.tvPhotoDescription.text = model.title
 
         containerView.tvTimeStamp.text = model.timeStamp
     }
