@@ -45,12 +45,12 @@ class HomeFragment : Fragment(), HomeContract.View {
         super.onViewCreated(view, savedInstanceState)
         presenter.init()
         btLogo.setOnClickListener {
-            uploudData()
+            uploadData()
         }
 
     }
 
-    fun uploudData() {
+    fun uploadData() {
         val listOfItems = listOf(
             PostedItem(
                 profile = UserProfile(
@@ -63,7 +63,7 @@ class HomeFragment : Fragment(), HomeContract.View {
                 likesCount = 1,
                 isLiked = true,
                 timeStamp = "123 years ago",
-                imageDescription = "nice photo",
+                title = "nice photo",
                 comments = listOf(
                     Comment(
                         profile = UserProfile(
