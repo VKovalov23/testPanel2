@@ -1,8 +1,17 @@
-package com.example.myapplication.ui
+package com.example.myapplication.ui.home
 
-class Presenter( private val mainFragment: BaseContract.View) : BaseContract.Presenter {
+import android.view.View
+
+class HomePresenter(private val view: HomeContract.View) :
+    HomeContract.Presenter {
+
+
+    override fun onLogOutClick() {
+        TODO("Not yet implemented")
+    }
 
     override fun init() {
+        view.initView()
     }
 
     override fun onLogoClick() {
