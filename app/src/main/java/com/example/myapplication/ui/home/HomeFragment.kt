@@ -50,13 +50,12 @@ class HomeFragment : Fragment(), HomeContract.View {
     }
 
     fun uploadData() {
-        val listOfItems = listOf(
+        val items = listOf(
             PostedItem(
                 profile = UserProfile(
-                    photoUri = "https://www.thispersondoesnotexist.com/image?21603152698",
-                    profileLink = "123",
-                    profileName = "Random Human ",
-                    profilePhoto = "https://www.thispersondoesnotexist.com/image?21603152698"
+                    id = "123",
+                    name = "Random Human ",
+                    photo = "https://www.thispersondoesnotexist.com/image?21603152698"
                 ),
                 imageUri = "https://www.thispersondoesnotexist.com/image?21603152698",
                 likesCount = 1,
@@ -66,10 +65,9 @@ class HomeFragment : Fragment(), HomeContract.View {
                 comments = listOf(
                     Comment(
                         profile = UserProfile(
-                            photoUri = "https://www.thispersondoesnotexist.com/image?21603152698",
-                            profileLink = "123",
-                            profileName = "Random Human",
-                            profilePhoto = "https://www.thispersondoesnotexist.com/image?21603152698"
+                            id = "123",
+                            name = "Random Human",
+                            photo = "https://www.thispersondoesnotexist.com/image?21603152698"
                         ),
                         description = "nice",
                         commentTimeStamp = "12:32"
@@ -78,7 +76,7 @@ class HomeFragment : Fragment(), HomeContract.View {
                 )
             )
         )
-        postedImageAdapter.postList = listOfItems
+        postedImageAdapter.postList = items
     }
 
 

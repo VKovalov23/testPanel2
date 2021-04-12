@@ -15,38 +15,35 @@
 
         <ImageView
             android:id="@+id/btMenu"
-            android:layout_width="10dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:adjustViewBounds="true"
+            android:layout_weight="1"
             android:src="@drawable/ic_more" />
 
         <ImageView
             android:id="@+id/btLogo"
-            android:layout_width="wrap_content"
-            android:layout_height="55dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="5"
             android:adjustViewBounds="true"
             android:src="@drawable/ic_logo" />
 
         <ImageView
             android:id="@+id/btCamera"
-            android:layout_width="10dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_gravity="center_horizontal"
+            android:layout_gravity="center"
             android:layout_weight="1"
             android:layout_margin="5dp"
-            android:layout_marginTop="5dp"
             android:adjustViewBounds="true"
-            android:src="@drawable/ic_camera"
-            />
+            android:src="@drawable/ic_camera" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvMainPosts"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
+        android:layout_height="match_parent"
         />
 </LinearLayout>

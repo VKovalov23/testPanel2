@@ -37,17 +37,17 @@ class PostedImageViewHolder(
 
         isLiked = model.isLiked
 
-        containerView.tvTopProfileName.text = model.profile.profileName
+        containerView.tvTopProfileName.text = model.profile.name
         containerView.tvTopProfileName.setOnClickListener {
-            action?.invoke(model.profile.profileLink)
+            action?.invoke(model.profile.id)
         }
 
         Glide.with(containerView.context)
-            .load(model.profile.profilePhoto)
+            .load(model.profile.photo)
             .into(containerView.civProfilePhoto)
 
         containerView.civProfilePhoto.setOnClickListener {
-            action?.invoke(model.profile.profileLink)
+            action?.invoke(model.profile.id)
         }
 
         Glide.with(containerView.context)
@@ -79,9 +79,9 @@ class PostedImageViewHolder(
 
         containerView.tvLikeCounter.text = model.likesCount.toString()
 
-        containerView.tvBottomProfileName.text = model.profile.profileName
+        containerView.tvBottomProfileName.text = model.profile.name
         containerView.tvBottomProfileName.setOnClickListener {
-            action?.invoke(model.profile.profileLink)
+            action?.invoke(model.profile.id)
         }
         containerView.tvPhotoDescription.text = model.title
 

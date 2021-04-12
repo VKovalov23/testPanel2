@@ -11,10 +11,9 @@ data class PostedItem(
 )
 
 data class UserProfile(
-    val photoUri: String,
-    val profileLink: String,
-    val profileName: String,
-    val profilePhoto: String
+    val id: String,
+    val name: String,
+    val photo: String
 )
 
 data class Comment(
