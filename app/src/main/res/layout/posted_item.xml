@@ -4,36 +4,29 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/llTopPost"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:orientation="horizontal"
-        android:weightSum="7"
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/civProfilePhoto"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_vertical"
+        android:src="@drawable/ic_tesla_photo"
+        app:layout_constraintBottom_toTopOf="@id/ivPostPhoto"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent" />
 
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/civProfilePhoto"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_gravity="center_vertical"
-            android:src="@drawable/ic_tesla_photo" />
-
-        <TextView
-            android:id="@+id/tvTopProfileName"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="6"
-            android:gravity="center_vertical"
-            android:text="Nikola Tesla"
-            android:textColor="@color/black"
-            android:textSize="30sp" />
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
+    <TextView
+        android:id="@+id/tvTopProfileName"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="6"
+        android:gravity="center_vertical"
+        android:text="Nikola Tesla"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@id/ivPostPhoto"
+        app:layout_constraintStart_toEndOf="@id/civProfilePhoto"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <ImageView
@@ -42,8 +35,9 @@
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
         android:src="@drawable/ic_tesla"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/llTopPost" />
+        app:layout_constraintTop_toBottomOf="@id/civProfilePhoto" />
 
     <ImageView
         android:id="@+id/ivIsLiked"
@@ -53,7 +47,7 @@
         android:adjustViewBounds="true"
         android:src="@drawable/ic_grey_like"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/llTopPost" />
+        app:layout_constraintTop_toBottomOf="@id/tvTopProfileName" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/llMiddlePost"
@@ -81,34 +75,32 @@
             android:id="@+id/ivShare"
             android:layout_width="35dp"
             android:layout_height="35dp"
+            android:layout_margin="5dp"
             android:adjustViewBounds="true"
             android:src="@drawable/ic_share"
-            android:layout_margin="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/ivBottomIsLiked"
             app:layout_constraintStart_toEndOf="@id/etAddComment"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
+            android:id="@+id/ivBottomIsLiked"
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:id="@+id/ivBottomIsLiked"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toEndOf="@id/ivShare"
-            app:layout_constraintEnd_toStartOf="@id/tvLikeCounter"
             android:src="@drawable/ic_grey_like"
-            />
-
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/tvLikeCounter"
+            app:layout_constraintStart_toEndOf="@id/ivShare"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <TextView
             android:id="@+id/tvLikeCounter"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_margin="5dp"
             android:gravity="center_vertical"
             android:text="71 likes"
-            android:layout_margin="5dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/ivBottomIsLiked"
             app:layout_constraintTop_toTopOf="parent" />

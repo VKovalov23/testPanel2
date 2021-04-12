@@ -18,74 +18,24 @@ class HomeFragment : Fragment(), HomeContract.View {
 
     companion object {
         @JvmStatic
-        fun newInstance() =
-            HomeFragment()
+        fun newInstance() = HomeFragment()
         const val IDENT = "HomeFragment"
     }
 
     var postedImageAdapter: PostedImageAdapter = PostedImageAdapter()
 
-    var presenter: HomeContract.Presenter =
-        HomePresenter(this)
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+    var presenter: HomeContract.Presenter = HomePresenter(this)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         presenter.init()
-        btLogo.setOnClickListener {
-            uploadData()
-        }
-
-    }
-
-    fun uploadData() {
-        val items = listOf(
-            PostedItem(
-                profile = UserProfile(
-                    id = "123",
-                    name = "Random Human ",
-                    photo = "https://www.thispersondoesnotexist.com/image?21603152698"
-                ),
-                imageUri = "https://www.thispersondoesnotexist.com/image?21603152698",
-                likesCount = 1,
-                isLiked = true,
-                timeStamp = "123 years ago",
-                title = "nice photo",
-                comments = listOf(
-                    Comment(
-                        profile = UserProfile(
-                            id = "123",
-                            name = "Random Human",
-                            photo = "https://www.thispersondoesnotexist.com/image?21603152698"
-                        ),
-                        description = "nice",
-                        commentTimeStamp = "12:32"
-
-                    )
-                )
-            )
-        )
-        postedImageAdapter.postList = items
-    }
-
-
-    override fun closeApp() {
-        TODO("Not yet implemented")
-    }
-
-    override fun setItems() {
-        TODO("Not yet implemented")
     }
 
     override fun initView() {
@@ -95,9 +45,16 @@ class HomeFragment : Fragment(), HomeContract.View {
         }
     }
 
+    override fun setItems(items: List<PostedItem>) {
+        postedImageAdapter.postList = items
+    }
+
     override fun updateItem() {
         TODO("Not yet implemented")
     }
 
+    override fun closeApp() {
+        TODO("Not yet implemented")
+    }
 
 }

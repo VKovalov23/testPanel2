@@ -21,11 +21,13 @@ class PostedImageViewHolder(
     }
 
     var isLiked: Boolean = false
+    var likesCount: Int = 1
 
     fun setLike(like: Boolean) {
         if (like) {
             containerView.ivIsLiked.setImageResource(R.drawable.ic_red_like)
             containerView.ivBottomIsLiked.setImageResource(R.drawable.ic_red_like)
+
         } else {
             containerView.ivIsLiked.setImageResource(R.drawable.ic_grey_like)
             containerView.ivBottomIsLiked.setImageResource(R.drawable.ic_grey_like)
@@ -36,6 +38,7 @@ class PostedImageViewHolder(
     fun bind(model: PostedItem) {
 
         isLiked = model.isLiked
+        likesCount = model.likesCount
 
         containerView.tvTopProfileName.text = model.profile.name
         containerView.tvTopProfileName.setOnClickListener {
@@ -57,16 +60,10 @@ class PostedImageViewHolder(
         containerView.ivPostPhoto.setOnClickListener(object : DoubleClickListener() {
             override fun onDoubleClick(v: View) {
                 setLike(isLiked)
-//                isLiked = !isLiked
                 Toast.makeText(containerView.context, "rabotaet", Toast.LENGTH_SHORT).show()
             }
         })
 
-
-//        containerView.ivIsLiked.
-//        containerView.etAddComment.setOnClickListener {
-//            action?.
-//        }
 
 //        containerView.ivShare.setOnClickListener {
 //            action?.
@@ -74,7 +71,6 @@ class PostedImageViewHolder(
 
         containerView.ivBottomIsLiked.setOnClickListener {
             setLike(isLiked)
-//            isLiked = !isLiked
         }
 
         containerView.tvLikeCounter.text = model.likesCount.toString()

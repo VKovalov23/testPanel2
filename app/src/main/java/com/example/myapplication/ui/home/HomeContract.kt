@@ -1,12 +1,13 @@
 package com.example.myapplication.ui.home
 
+import com.example.myapplication.ui.home.model.PostedItem
 import com.example.myapplication.utils.core.ui.BaseContract
 
 interface HomeContract {
 
     interface View : BaseContract.View {
         fun initView()
-        fun setItems()
+        fun setItems(items: List<PostedItem>)
         fun updateItem()
     }
 

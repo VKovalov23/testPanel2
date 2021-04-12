@@ -26,17 +26,17 @@
             android:id="@+id/btFavorite"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:adjustViewBounds="true"
             android:layout_margin="5dp"
             android:layout_weight="1"
+            android:adjustViewBounds="true"
             android:src="@drawable/ic_like" />
 
         <ImageView
             android:id="@+id/btHome"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:adjustViewBounds="true"
             android:layout_weight="1"
+            android:adjustViewBounds="true"
             android:src="@drawable/ic_home" />
 
         <ImageView
@@ -44,8 +44,8 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_margin="5dp"
-            android:adjustViewBounds="true"
             android:layout_weight="1"
+            android:adjustViewBounds="true"
             android:src="@drawable/ic_profile" />
 
 
