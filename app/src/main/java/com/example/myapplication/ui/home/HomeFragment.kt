@@ -8,9 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
-import com.example.myapplication.ui.home.model.Comment
 import com.example.myapplication.ui.home.model.PostedItem
-import com.example.myapplication.ui.home.model.UserProfile
 import com.example.myapplication.ui.home.recycler.PostedImageAdapter
 import kotlinx.android.synthetic.main.fragment_home.*
 
@@ -39,6 +37,10 @@ class HomeFragment : Fragment(), HomeContract.View {
     }
 
     override fun initView() {
+        postedImageAdapter.action = {
+            presenter.onAuthorProfileClick(it)
+        }
+
         rvMainPosts.apply {
             layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
             adapter = postedImageAdapter

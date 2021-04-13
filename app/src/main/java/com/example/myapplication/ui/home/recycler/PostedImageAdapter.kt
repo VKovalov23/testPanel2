@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.ui.home.model.PostedItem
+import com.example.myapplication.ui.home.model.PostedItemActionType
 
 class PostedImageAdapter: RecyclerView.Adapter<PostedImageViewHolder>() {
 
@@ -12,7 +13,7 @@ class PostedImageAdapter: RecyclerView.Adapter<PostedImageViewHolder>() {
             field = value
             notifyDataSetChanged()
         }
-    var action: ((String) -> Unit)? = null
+    var action: ((PostedItemActionType) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostedImageViewHolder {
         return PostedImageViewHolder(

@@ -2,6 +2,7 @@ package com.example.myapplication.ui.home
 
 import com.example.myapplication.ui.home.model.Comment
 import com.example.myapplication.ui.home.model.PostedItem
+import com.example.myapplication.ui.home.model.PostedItemActionType
 import com.example.myapplication.ui.home.model.UserProfile
 
 class HomePresenter(private val view: HomeContract.View) :
@@ -32,6 +33,15 @@ class HomePresenter(private val view: HomeContract.View) :
         TODO("Not yet implemented")
     }
 
+    override fun onAuthorProfileClick(profileId: PostedItemActionType) {
+        when (profileId) {
+            is PostedItemActionType.ProfileId-> {}
+            is PostedItemActionType.Like-> {}
+            is PostedItemActionType.Comment-> {}
+            is PostedItemActionType.Share-> {}
+        }
+    }
+
     private fun uploadData(): List<PostedItem> {
         return listOf(
             PostedItem(
@@ -43,6 +53,7 @@ class HomePresenter(private val view: HomeContract.View) :
                 imageUri = "https://www.thispersondoesnotexist.com/image?21603152698",
                 likesCount = 1,
                 isLiked = true,
+                postId = "sgsdhf",
                 timeStamp = "123 years ago",
                 title = "nice photo",
                 comments = listOf(

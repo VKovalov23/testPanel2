@@ -6,13 +6,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.myapplication.R
 import com.example.myapplication.ui.home.model.PostedItem
+import com.example.myapplication.ui.home.model.PostedItemActionType
 import com.example.myapplication.utils.DoubleClickListener
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.posted_item.view.*
 
 class PostedImageViewHolder(
     override val containerView: View,
-    private val action: ((String) -> Unit)?
+    private val action: ((PostedItemActionType) -> Unit)?
 ) : RecyclerView.ViewHolder(containerView),
     LayoutContainer {
 
@@ -21,28 +22,17 @@ class PostedImageViewHolder(
     }
 
     var isLiked: Boolean = false
-    var likesCount: Int = 1
-
-    fun setLike(like: Boolean) {
-        if (like) {
-            containerView.ivIsLiked.setImageResource(R.drawable.ic_red_like)
-            containerView.ivBottomIsLiked.setImageResource(R.drawable.ic_red_like)
-
-        } else {
-            containerView.ivIsLiked.setImageResource(R.drawable.ic_grey_like)
-            containerView.ivBottomIsLiked.setImageResource(R.drawable.ic_grey_like)
-        }
-        isLiked = !isLiked
-    }
+    var likesCount: Int = 0
 
     fun bind(model: PostedItem) {
 
         isLiked = model.isLiked
-        likesCount = model.likesCount
+        likesCount = if (isLiked) model.likesCount - 1 else model.likesCount + 1
+        setLike(isLiked)
 
         containerView.tvTopProfileName.text = model.profile.name
         containerView.tvTopProfileName.setOnClickListener {
-            action?.invoke(model.profile.id)
+            action?.invoke(PostedItemActionType.ProfileId(model.profile.id) as PostedItemActionType)
         }
 
         Glide.with(containerView.context)
@@ -50,7 +40,7 @@ class PostedImageViewHolder(
             .into(containerView.civProfilePhoto)
 
         containerView.civProfilePhoto.setOnClickListener {
-            action?.invoke(model.profile.id)
+            action?.invoke(PostedItemActionType.ProfileId(model.profile.id) as PostedItemActionType)
         }
 
         Glide.with(containerView.context)
@@ -60,27 +50,41 @@ class PostedImageViewHolder(
         containerView.ivPostPhoto.setOnClickListener(object : DoubleClickListener() {
             override fun onDoubleClick(v: View) {
                 setLike(isLiked)
-                Toast.makeText(containerView.context, "rabotaet", Toast.LENGTH_SHORT).show()
+                action?.invoke(PostedItemActionType.Like(isLiked) as PostedItemActionType)
             }
         })
 
-
-//        containerView.ivShare.setOnClickListener {
-//            action?.
-//        }
-
         containerView.ivBottomIsLiked.setOnClickListener {
             setLike(isLiked)
+            action?.invoke(PostedItemActionType.Like(isLiked) as PostedItemActionType)
         }
-
-        containerView.tvLikeCounter.text = model.likesCount.toString()
 
         containerView.tvBottomProfileName.text = model.profile.name
         containerView.tvBottomProfileName.setOnClickListener {
-            action?.invoke(model.profile.id)
+            action?.invoke(PostedItemActionType.ProfileId(model.profile.id) as PostedItemActionType)
         }
         containerView.tvPhotoDescription.text = model.title
 
         containerView.tvTimeStamp.text = model.timeStamp
+
+        containerView.ivShare.setOnClickListener {
+            action?.invoke(PostedItemActionType.Share(model.postId) as PostedItemActionType)
+        }
+    }
+
+    fun setLike(like: Boolean) {
+        if (like) {
+            containerView.ivIsLiked.setImageResource(R.drawable.ic_red_like)
+            containerView.ivBottomIsLiked.setImageResource(R.drawable.ic_red_like)
+            likesCount++
+            containerView.tvLikeCounter.text = likesCount.toString()
+
+        } else {
+            containerView.ivIsLiked.setImageResource(R.drawable.ic_grey_like)
+            containerView.ivBottomIsLiked.setImageResource(R.drawable.ic_grey_like)
+            likesCount--
+            containerView.tvLikeCounter.text = likesCount.toString()
+        }
+        isLiked = !isLiked
     }
 }
