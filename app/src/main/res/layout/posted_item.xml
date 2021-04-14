@@ -62,7 +62,7 @@
             android:layout_height="match_parent"
             android:layout_margin="10dp"
             android:background="@drawable/ic_comment_frame"
-            android:drawableStart="@drawable/ic_camera"
+            android:drawableStart="@drawable/ic_message"
             android:drawablePadding="5dp"
             android:hint="Add a comment..."
             android:padding="5dp"
@@ -92,7 +92,6 @@
             app:layout_constraintEnd_toStartOf="@id/tvLikeCounter"
             app:layout_constraintStart_toEndOf="@id/ivShare"
             app:layout_constraintTop_toTopOf="parent" />
-
 
         <TextView
             android:id="@+id/tvLikeCounter"
@@ -147,5 +146,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/llBottomPost" />
 
-
+    <ImageView
+        android:id="@+id/ivTestCommentBottom"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_message"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTimeStamp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

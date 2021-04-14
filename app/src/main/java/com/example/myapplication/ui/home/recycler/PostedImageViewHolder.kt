@@ -30,6 +30,16 @@ class PostedImageViewHolder(
         likesCount = if (isLiked) model.likesCount - 1 else model.likesCount + 1
         setLike(isLiked)
 
+        containerView.ivTestCommentBottom.setOnClickListener {
+            action?.invoke(
+                PostedItemActionType.Comment(
+                    model.postId,
+                    containerView.etAddComment.text.toString(),
+                    System.currentTimeMillis().toString()
+                ) as PostedItemActionType
+            )
+        }
+
         containerView.tvTopProfileName.text = model.profile.name
         containerView.tvTopProfileName.setOnClickListener {
             action?.invoke(PostedItemActionType.ProfileId(model.profile.id) as PostedItemActionType)
