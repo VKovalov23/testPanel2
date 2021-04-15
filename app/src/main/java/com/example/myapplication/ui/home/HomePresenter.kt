@@ -35,10 +35,16 @@ class HomePresenter(private val view: HomeContract.View) :
 
     override fun onAuthorProfileClick(profileId: PostedItemActionType) {
         when (profileId) {
-            is PostedItemActionType.ProfileId-> {}
-            is PostedItemActionType.Like-> {}
-            is PostedItemActionType.Comment-> {}
-            is PostedItemActionType.Share-> {}
+            is PostedItemActionType.ProfileId -> {
+            }
+            is PostedItemActionType.Like -> {
+            }
+            is PostedItemActionType.Comment -> {
+            }
+            is PostedItemActionType.Share -> {
+            }
+            is PostedItemActionType.CommentClick -> {
+            }
         }
     }
 
@@ -61,11 +67,69 @@ class HomePresenter(private val view: HomeContract.View) :
                         profile = UserProfile(
                             id = "123",
                             name = "Random Human",
-                            photo = "https://www.thispersondoesnotexist.com/image?21603152698"
+                            photo = "https://www.thispersondoesnotexist.com/image?21603152692"
                         ),
                         description = "nice",
                         commentTimeStamp = "12:32"
-
+                    ),
+                    Comment(
+                        profile = UserProfile(
+                            id = "124",
+                            name = "Random woman",
+                            photo = "https://www.thispersondoesnotexist.com/image?21603152693"
+                        ),
+                        description = "nice",
+                        commentTimeStamp = "12:32"
+                    ),
+                    Comment(
+                        profile = UserProfile(
+                            id = "321",
+                            name = "Random man",
+                            photo = "https://www.thispersondoesnotexist.com/image?21603152694"
+                        ),
+                        description = "nice",
+                        commentTimeStamp = "12:32"
+                    )
+                )
+            ), PostedItem(
+                profile = UserProfile(
+                    id = "123",
+                    name = "Random Human ",
+                    photo = "https://www.thispersondoesnotexist.com/image?21603152698"
+                ),
+                imageUri = "https://www.thispersondoesnotexist.com/image?21603152749",
+                likesCount = 1,
+                isLiked = true,
+                postId = "sgsdhf",
+                timeStamp = "123 years ago",
+                title = "nice photo",
+                comments = listOf(
+                    Comment(
+                        profile = UserProfile(
+                            id = "123",
+                            name = "Random Human",
+                            photo = "https://www.thispersondoesnotexist.com/image?21603152692"
+                        ),
+                        description = "nice",
+                        commentTimeStamp = "12:32"
+                    ),
+                    Comment(
+                        profile = UserProfile(
+                            id = "124",
+                            name = "Random woman",
+                            photo = "https://www.thispersondoesnotexist.com/image?21603152693"
+                        ),
+                        description = "nice",
+                        commentTimeStamp = "12:32"
+                    ),
+                    Comment(
+                        profile = UserProfile(
+                            id = "321",
+                            name = "Random man",
+                            photo = "https://www.thispersondoesnotexist.com/image?21603152694"
+                        ),
+                        description = "nice",
+                        commentTimeStamp = "12:32"
                     )
                 )
             )

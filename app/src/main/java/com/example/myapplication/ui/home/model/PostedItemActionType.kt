@@ -9,4 +9,6 @@ sealed class PostedItemActionType {
         PostedItemActionType()
 
     data class Share(val postId: String) : PostedItemActionType()
+
+    data class CommentClick(val id: String) : PostedItemActionType()
 }

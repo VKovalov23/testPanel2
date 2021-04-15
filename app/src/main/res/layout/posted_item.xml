@@ -53,6 +53,7 @@
         android:id="@+id/llMiddlePost"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        app:layout_constraintBottom_toTopOf="@id/svComments"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ivPostPhoto">
 
@@ -67,8 +68,18 @@
             android:hint="Add a comment..."
             android:padding="5dp"
             android:paddingStart="10dp"
-            app:layout_constraintEnd_toStartOf="@id/ivShare"
+            app:layout_constraintEnd_toStartOf="@id/ivSendComment"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/ivSendComment"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_margin="5dp"
+            android:src="@drawable/ic_message"
+            app:layout_constraintEnd_toStartOf="@id/ivShare"
+            app:layout_constraintStart_toEndOf="@id/etAddComment"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
@@ -80,7 +91,7 @@
             android:src="@drawable/ic_share"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/ivBottomIsLiked"
-            app:layout_constraintStart_toEndOf="@id/etAddComment"
+            app:layout_constraintStart_toEndOf="@id/ivSendComment"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
@@ -105,6 +116,36 @@
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:id="@+id/rvComments"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="100dp"-->
+<!--        android:nestedScrollingEnabled="false"-->
+<!--        android:focusable="true"-->
+<!--        android:clickable="true"-->
+<!--        android:visibility="gone"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/llBottomPost"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/llMiddlePost" />-->
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/svComments"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:nestedScrollingEnabled="false"
+        android:focusable="true"
+        android:clickable="true"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/llBottomPost"
+        app:layout_constraintTop_toBottomOf="@id/llMiddlePost" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent"
+            android:id="@+id/llComments"/>
+
+    </androidx.core.widget.NestedScrollView>
+
     <LinearLayout
         android:id="@+id/llBottomPost"
         android:layout_width="match_parent"
@@ -112,7 +153,7 @@
         android:orientation="horizontal"
         android:weightSum="7"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/llMiddlePost">
+        app:layout_constraintTop_toBottomOf="@id/svComments">
 
         <TextView
             android:id="@+id/tvBottomProfileName"
@@ -139,18 +180,12 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/tvTimeStamp"
+        android:id="@+id/tvCommentTimeStamp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="141 years ago"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/llBottomPost" />
 
-    <ImageView
-        android:id="@+id/ivTestCommentBottom"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@drawable/ic_message"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvTimeStamp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
