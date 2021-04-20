@@ -53,7 +53,7 @@
         android:id="@+id/llMiddlePost"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        app:layout_constraintBottom_toTopOf="@id/svComments"
+        app:layout_constraintBottom_toTopOf="@id/rvComments"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ivPostPhoto">
 
@@ -65,7 +65,7 @@
             android:background="@drawable/ic_comment_frame"
             android:drawableStart="@drawable/ic_message"
             android:drawablePadding="5dp"
-            android:hint="Add a comment..."
+            android:hint="@string/add_a_comment"
             android:padding="5dp"
             android:paddingStart="10dp"
             app:layout_constraintEnd_toStartOf="@id/ivSendComment"
@@ -116,8 +116,19 @@
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-<!--    <androidx.recyclerview.widget.RecyclerView-->
-<!--        android:id="@+id/rvComments"-->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvComments"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:nestedScrollingEnabled="false"
+        android:focusable="true"
+        android:clickable="true"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/llBottomPost"
+        app:layout_constraintTop_toBottomOf="@id/llMiddlePost" />
+
+<!--    <androidx.core.widget.NestedScrollView-->
+<!--        android:id="@+id/svComments"-->
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="100dp"-->
 <!--        android:nestedScrollingEnabled="false"-->
@@ -125,26 +136,15 @@
 <!--        android:clickable="true"-->
 <!--        android:visibility="gone"-->
 <!--        app:layout_constraintBottom_toTopOf="@+id/llBottomPost"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/llMiddlePost" />-->
+<!--        app:layout_constraintTop_toBottomOf="@id/llMiddlePost" >-->
 
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/svComments"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:nestedScrollingEnabled="false"
-        android:focusable="true"
-        android:clickable="true"
-        android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@+id/llBottomPost"
-        app:layout_constraintTop_toBottomOf="@id/llMiddlePost" >
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:orientation="vertical"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:id="@+id/llComments"/>-->
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:orientation="vertical"
-            android:layout_height="match_parent"
-            android:id="@+id/llComments"/>
-
-    </androidx.core.widget.NestedScrollView>
+<!--    </androidx.core.widget.NestedScrollView>-->
 
     <LinearLayout
         android:id="@+id/llBottomPost"
@@ -153,7 +153,7 @@
         android:orientation="horizontal"
         android:weightSum="7"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/svComments">
+        app:layout_constraintTop_toBottomOf="@id/rvComments">
 
         <TextView
             android:id="@+id/tvBottomProfileName"

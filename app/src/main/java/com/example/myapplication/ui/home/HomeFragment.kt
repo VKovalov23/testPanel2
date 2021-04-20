@@ -54,9 +54,4 @@ class HomeFragment : Fragment(), HomeContract.View {
     override fun updateItem() {
         TODO("Not yet implemented")
     }
-
-    override fun closeApp() {
-        TODO("Not yet implemented")
-    }
-
 }

@@ -21,22 +21,16 @@ class PostedImageViewHolder(
 
     companion object {
         const val LAYOUT_ID = R.layout.posted_item
-
     }
 
     var commentAdapter: CommentAdapter = CommentAdapter()
 
-    var isLiked: Boolean = false
-    var likesCount: Int = 0
-
     fun bind(model: PostedItem) {
-
-        isLiked = model.isLiked
-        likesCount = if (isLiked) model.likesCount - 1 else model.likesCount + 1
-        setLike(isLiked)
+//        likesCount = if (model.isLiked) model.likesCount - 1 else model.likesCount + 1
+        setLike(model.isLiked, model.likesCount)
 
         containerView.ivSendComment.setOnClickListener {
-//            containerView.rvComments.isVisible = true
+            containerView.rvComments.isVisible = true
 
             action?.invoke(
                 PostedItemActionType.Comment(
@@ -66,24 +60,31 @@ class PostedImageViewHolder(
 
         containerView.ivPostPhoto.setOnClickListener(object : DoubleClickListener() {
             override fun onDoubleClick(v: View) {
-                setLike(isLiked)
-                action?.invoke(PostedItemActionType.Like(isLiked) as PostedItemActionType)
+                action?.invoke(
+                    PostedItemActionType.Like(
+                        model.isLiked,
+                        model.postId
+                    ) as PostedItemActionType
+                )
             }
         })
 
 //        containerView.llComments.addView()
 
-//        containerView.rvComments.apply {
-//            layoutManager = LinearLayoutManager(containerView.context, RecyclerView.VERTICAL, false )
-//            adapter = commentAdapter
-//        }
-
+        containerView.rvComments.apply {
+            layoutManager = LinearLayoutManager(containerView.context, RecyclerView.VERTICAL, false)
+            adapter = commentAdapter
+        }
 
         commentAdapter.commentList = model.comments
 
         containerView.ivBottomIsLiked.setOnClickListener {
-            setLike(isLiked)
-            action?.invoke(PostedItemActionType.Like(isLiked) as PostedItemActionType)
+            action?.invoke(
+                PostedItemActionType.Like(
+                    model.isLiked,
+                    model.postId
+                ) as PostedItemActionType
+            )
         }
 
         containerView.tvBottomProfileName.text = model.profile.name
@@ -99,19 +100,15 @@ class PostedImageViewHolder(
         }
     }
 
-    fun setLike(like: Boolean) {
+    fun setLike(like: Boolean, likesCount: Int) {
         if (like) {
             containerView.ivIsLiked.setImageResource(R.drawable.ic_red_like)
             containerView.ivBottomIsLiked.setImageResource(R.drawable.ic_red_like)
-            likesCount++
             containerView.tvLikeCounter.text = likesCount.toString()
-
         } else {
             containerView.ivIsLiked.setImageResource(R.drawable.ic_grey_like)
             containerView.ivBottomIsLiked.setImageResource(R.drawable.ic_grey_like)
-            likesCount--
             containerView.tvLikeCounter.text = likesCount.toString()
         }
-        isLiked = !isLiked
     }
 }

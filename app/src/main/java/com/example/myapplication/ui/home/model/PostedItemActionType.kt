@@ -1,7 +1,7 @@
 package com.example.myapplication.ui.home.model
 
 sealed class PostedItemActionType {
-    data class Like(val isLiked: Boolean) : PostedItemActionType()
+    data class Like(val isLiked: Boolean, val postId: String) : PostedItemActionType()
 
     data class ProfileId(val id: String) : PostedItemActionType()
 

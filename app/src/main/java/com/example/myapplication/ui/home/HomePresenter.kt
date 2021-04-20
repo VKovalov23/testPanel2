@@ -135,8 +135,4 @@ class HomePresenter(private val view: HomeContract.View) :
             )
         )
     }
-
-    override fun onLogOutClick() {
-        TODO("Not yet implemented")
-    }
 }
