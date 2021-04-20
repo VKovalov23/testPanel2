@@ -1,7 +1,6 @@
 package com.example.myapplication.ui.home
 
 import com.example.myapplication.ui.home.model.PostedItem
-import com.example.myapplication.ui.home.model.PostedItemActionType
 import com.example.myapplication.utils.core.ui.BaseContract
 
 interface HomeContract {
@@ -19,6 +18,13 @@ interface HomeContract {
         fun onMenuClick()
         fun onItemClick()
         fun onCommentClick()
-        fun onAuthorProfileClick(profileId: PostedItemActionType)
+        fun onAuthorProfileClick()
+
+        fun onLikeClick(isLiked: Boolean, postId: String)
+        fun onProfileClick(id: String)
+        fun onSendCommentClick(title: String, postId: String)
+        fun onShareClick(postId: String)
+        fun onCommentAuthorClick(id: String)
+
     }
 }

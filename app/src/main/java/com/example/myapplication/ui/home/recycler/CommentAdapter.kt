@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.ui.home.model.Comment
-import com.example.myapplication.ui.home.model.PostedItemActionType
 
 class CommentAdapter: RecyclerView.Adapter<CommentViewHolder>() {
 
@@ -13,7 +12,7 @@ class CommentAdapter: RecyclerView.Adapter<CommentViewHolder>() {
             field = value
             notifyDataSetChanged()
         }
-    var action: ((PostedItemActionType.CommentClick) -> Unit)? = null
+    var onCommentAuthor: ((Comment) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CommentViewHolder {
         return CommentViewHolder(
@@ -23,7 +22,7 @@ class CommentAdapter: RecyclerView.Adapter<CommentViewHolder>() {
                     parent,
                     false
                 ),
-            action
+            onCommentAuthor
         )
     }
 

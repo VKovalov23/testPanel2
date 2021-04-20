@@ -6,8 +6,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.myapplication.R
+import com.example.myapplication.ui.home.model.Comment
 import com.example.myapplication.ui.home.model.PostedItem
-import com.example.myapplication.ui.home.model.PostedItemActionType
 import com.example.myapplication.utils.DoubleClickListener
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.posted_item.view.*
@@ -15,7 +15,12 @@ import kotlinx.android.synthetic.main.posted_item.view.tvCommentTimeStamp
 
 class PostedImageViewHolder(
     override val containerView: View,
-    private val action: ((PostedItemActionType) -> Unit)?
+    private val onLike: ((PostedItem) -> Unit)?,
+    private val onProfile: ((PostedItem) -> Unit)?,
+    private val onSendComment: ((PostedItem) -> Unit)?,
+    private val onShare: ((PostedItem) -> Unit)?,
+    private val onCommentAuthor: ((Comment) -> Unit)?
+
 ) : RecyclerView.ViewHolder(containerView),
     LayoutContainer {
 
@@ -31,19 +36,14 @@ class PostedImageViewHolder(
 
         containerView.ivSendComment.setOnClickListener {
             containerView.rvComments.isVisible = true
-
-            action?.invoke(
-                PostedItemActionType.Comment(
-                    model.postId,
-                    containerView.etAddComment.text.toString(),
-                    System.currentTimeMillis().toString()
-                ) as PostedItemActionType
+            onSendComment?.invoke(
+                model
             )
         }
 
         containerView.tvTopProfileName.text = model.profile.name
         containerView.tvTopProfileName.setOnClickListener {
-            action?.invoke(PostedItemActionType.ProfileId(model.profile.id) as PostedItemActionType)
+            onProfile?.invoke(model)
         }
 
         Glide.with(containerView.context)
@@ -51,7 +51,7 @@ class PostedImageViewHolder(
             .into(containerView.civProfilePhoto)
 
         containerView.civProfilePhoto.setOnClickListener {
-            action?.invoke(PostedItemActionType.ProfileId(model.profile.id) as PostedItemActionType)
+            onProfile?.invoke(model)
         }
 
         Glide.with(containerView.context)
@@ -60,11 +60,8 @@ class PostedImageViewHolder(
 
         containerView.ivPostPhoto.setOnClickListener(object : DoubleClickListener() {
             override fun onDoubleClick(v: View) {
-                action?.invoke(
-                    PostedItemActionType.Like(
-                        model.isLiked,
-                        model.postId
-                    ) as PostedItemActionType
+                onLike?.invoke(
+                    model.copy(isLiked = !model.isLiked)
                 )
             }
         })
@@ -79,26 +76,28 @@ class PostedImageViewHolder(
         commentAdapter.commentList = model.comments
 
         containerView.ivBottomIsLiked.setOnClickListener {
-            action?.invoke(
-                PostedItemActionType.Like(
-                    model.isLiked,
-                    model.postId
-                ) as PostedItemActionType
+            onLike?.invoke(
+                model.copy(isLiked = !model.isLiked)
             )
         }
 
         containerView.tvBottomProfileName.text = model.profile.name
         containerView.tvBottomProfileName.setOnClickListener {
-            action?.invoke(PostedItemActionType.ProfileId(model.profile.id) as PostedItemActionType)
+            onProfile?.invoke(
+                model
+            )
         }
         containerView.tvPhotoDescription.text = model.title
 
         containerView.tvCommentTimeStamp.text = model.timeStamp
 
         containerView.ivShare.setOnClickListener {
-            action?.invoke(PostedItemActionType.Share(model.postId) as PostedItemActionType)
+            onShare?.invoke(
+                model
+            )
         }
     }
+
 
     fun setLike(like: Boolean, likesCount: Int) {
         if (like) {

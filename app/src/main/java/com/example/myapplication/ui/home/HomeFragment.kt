@@ -37,8 +37,25 @@ class HomeFragment : Fragment(), HomeContract.View {
     }
 
     override fun initView() {
-        postedImageAdapter.action = {
-            presenter.onAuthorProfileClick(it)
+
+        postedImageAdapter.onLike = {
+            presenter.onLikeClick(it.isLiked, it.postId)
+        }
+
+        postedImageAdapter.onProfile = {
+            presenter.onProfileClick(it.profile.id)
+        }
+
+        postedImageAdapter.onSendComment = {
+            presenter.onSendCommentClick(it.title, it.postId)
+        }
+
+        postedImageAdapter.onShare = {
+            presenter.onShareClick(it.postId)
+        }
+
+        postedImageAdapter.onCommentAuthor = {
+            presenter.onCommentAuthorClick(it.profile.id)
         }
 
         rvMainPosts.apply {

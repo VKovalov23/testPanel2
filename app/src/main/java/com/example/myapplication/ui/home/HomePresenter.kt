@@ -2,7 +2,6 @@ package com.example.myapplication.ui.home
 
 import com.example.myapplication.ui.home.model.Comment
 import com.example.myapplication.ui.home.model.PostedItem
-import com.example.myapplication.ui.home.model.PostedItemActionType
 import com.example.myapplication.ui.home.model.UserProfile
 
 class HomePresenter(private val view: HomeContract.View) :
@@ -33,19 +32,8 @@ class HomePresenter(private val view: HomeContract.View) :
         TODO("Not yet implemented")
     }
 
-    override fun onAuthorProfileClick(profileId: PostedItemActionType) {
-        when (profileId) {
-            is PostedItemActionType.ProfileId -> {
-            }
-            is PostedItemActionType.Like -> {
-            }
-            is PostedItemActionType.Comment -> {
-            }
-            is PostedItemActionType.Share -> {
-            }
-            is PostedItemActionType.CommentClick -> {
-            }
-        }
+    override fun onAuthorProfileClick() {
+        TODO("Not yet implemented")
     }
 
     private fun uploadData(): List<PostedItem> {
@@ -134,5 +122,25 @@ class HomePresenter(private val view: HomeContract.View) :
                 )
             )
         )
+    }
+
+    override fun onLikeClick(isLiked: Boolean, postId: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onProfileClick(id: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onSendCommentClick(title: String, postId: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onShareClick(postId: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onCommentAuthorClick(id: String) {
+        TODO("Not yet implemented")
     }
 }
