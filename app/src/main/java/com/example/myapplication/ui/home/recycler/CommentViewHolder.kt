@@ -9,7 +9,7 @@ import kotlinx.android.synthetic.main.comment_item.view.*
 
 class CommentViewHolder(
     override val containerView: View,
-    private val onCommentAuthor: ((Comment) -> Unit)?
+    private val onCommentAuthorClick: ((Comment) -> Unit)?
 ) : RecyclerView.ViewHolder(containerView),
     LayoutContainer {
 
@@ -20,7 +20,7 @@ class CommentViewHolder(
     fun bind(model: Comment) {
         containerView.tvProfileName.text = model.profile.name
         containerView.tvProfileName.setOnClickListener {
-            onCommentAuthor?.invoke(model)
+            onCommentAuthorClick?.invoke(model)
         }
 
         containerView.tvCommentTitle.text = model.description

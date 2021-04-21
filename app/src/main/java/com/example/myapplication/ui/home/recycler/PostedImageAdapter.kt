@@ -13,11 +13,11 @@ class PostedImageAdapter : RecyclerView.Adapter<PostedImageViewHolder>() {
             field = value
             notifyDataSetChanged()
         }
-    var onLike: ((PostedItem) -> Unit)? = null
-    var onProfile: ((PostedItem) -> Unit)? = null
-    var onSendComment: ((PostedItem) -> Unit)? = null
-    var onShare: ((PostedItem) -> Unit)? = null
-    var onCommentAuthor: ((Comment) -> Unit)? = null
+    var onLikeClick: ((PostedItem) -> Unit)? = null
+    var onProfileClick: ((PostedItem) -> Unit)? = null
+    var onSendCommentClick: ((PostedItem) -> Unit)? = null
+    var onShareClick: ((PostedItem) -> Unit)? = null
+    var onCommentAuthorClick: ((Comment) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostedImageViewHolder {
         return PostedImageViewHolder(
@@ -27,11 +27,11 @@ class PostedImageAdapter : RecyclerView.Adapter<PostedImageViewHolder>() {
                     parent,
                     false
                 ),
-            onLike,
-            onProfile,
-            onSendComment,
-            onShare,
-            onCommentAuthor
+            onLikeClick,
+            onProfileClick,
+            onSendCommentClick,
+            onShareClick,
+            onCommentAuthorClick
         )
     }
 

@@ -38,25 +38,15 @@ class HomeFragment : Fragment(), HomeContract.View {
 
     override fun initView() {
 
-        postedImageAdapter.onLike = {
-            presenter.onLikeClick(it.isLiked, it.postId)
-        }
+        postedImageAdapter.onLikeClick = presenter::onLikeClick
 
-        postedImageAdapter.onProfile = {
-            presenter.onProfileClick(it.profile.id)
-        }
+        postedImageAdapter.onProfileClick = presenter::onProfileClick
 
-        postedImageAdapter.onSendComment = {
-            presenter.onSendCommentClick(it.title, it.postId)
-        }
+        postedImageAdapter.onSendCommentClick = presenter::onSendCommentClick
 
-        postedImageAdapter.onShare = {
-            presenter.onShareClick(it.postId)
-        }
+        postedImageAdapter.onShareClick = presenter::onShareClick
 
-        postedImageAdapter.onCommentAuthor = {
-            presenter.onCommentAuthorClick(it.profile.id)
-        }
+        postedImageAdapter.onCommentAuthorClick = presenter::onCommentAuthorClick
 
         rvMainPosts.apply {
             layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)

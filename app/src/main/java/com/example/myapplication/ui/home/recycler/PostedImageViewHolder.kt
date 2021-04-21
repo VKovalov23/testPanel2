@@ -15,11 +15,11 @@ import kotlinx.android.synthetic.main.posted_item.view.tvCommentTimeStamp
 
 class PostedImageViewHolder(
     override val containerView: View,
-    private val onLike: ((PostedItem) -> Unit)?,
-    private val onProfile: ((PostedItem) -> Unit)?,
-    private val onSendComment: ((PostedItem) -> Unit)?,
-    private val onShare: ((PostedItem) -> Unit)?,
-    private val onCommentAuthor: ((Comment) -> Unit)?
+    private val onLikeClick: ((PostedItem) -> Unit)?,
+    private val onProfileClick: ((PostedItem) -> Unit)?,
+    private val onSendCommentClick: ((PostedItem) -> Unit)?,
+    private val onShareClick: ((PostedItem) -> Unit)?,
+    private val onCommentAuthorClick: ((Comment) -> Unit)?
 
 ) : RecyclerView.ViewHolder(containerView),
     LayoutContainer {
@@ -36,14 +36,14 @@ class PostedImageViewHolder(
 
         containerView.ivSendComment.setOnClickListener {
             containerView.rvComments.isVisible = true
-            onSendComment?.invoke(
+            onSendCommentClick?.invoke(
                 model
             )
         }
 
         containerView.tvTopProfileName.text = model.profile.name
         containerView.tvTopProfileName.setOnClickListener {
-            onProfile?.invoke(model)
+            onProfileClick?.invoke(model)
         }
 
         Glide.with(containerView.context)
@@ -51,7 +51,7 @@ class PostedImageViewHolder(
             .into(containerView.civProfilePhoto)
 
         containerView.civProfilePhoto.setOnClickListener {
-            onProfile?.invoke(model)
+            onProfileClick?.invoke(model)
         }
 
         Glide.with(containerView.context)
@@ -60,7 +60,7 @@ class PostedImageViewHolder(
 
         containerView.ivPostPhoto.setOnClickListener(object : DoubleClickListener() {
             override fun onDoubleClick(v: View) {
-                onLike?.invoke(
+                onLikeClick?.invoke(
                     model.copy(isLiked = !model.isLiked)
                 )
             }
@@ -76,14 +76,14 @@ class PostedImageViewHolder(
         commentAdapter.commentList = model.comments
 
         containerView.ivBottomIsLiked.setOnClickListener {
-            onLike?.invoke(
-                model.copy(isLiked = !model.isLiked)
+            onLikeClick?.invoke(
+                model
             )
         }
 
         containerView.tvBottomProfileName.text = model.profile.name
         containerView.tvBottomProfileName.setOnClickListener {
-            onProfile?.invoke(
+            onProfileClick?.invoke(
                 model
             )
         }
@@ -92,7 +92,7 @@ class PostedImageViewHolder(
         containerView.tvCommentTimeStamp.text = model.timeStamp
 
         containerView.ivShare.setOnClickListener {
-            onShare?.invoke(
+            onShareClick?.invoke(
                 model
             )
         }

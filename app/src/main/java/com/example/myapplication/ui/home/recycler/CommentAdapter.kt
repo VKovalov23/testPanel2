@@ -5,14 +5,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.ui.home.model.Comment
 
-class CommentAdapter: RecyclerView.Adapter<CommentViewHolder>() {
+class CommentAdapter : RecyclerView.Adapter<CommentViewHolder>() {
 
     var commentList: List<Comment> = emptyList()
         set(value) {
             field = value
             notifyDataSetChanged()
         }
-    var onCommentAuthor: ((Comment) -> Unit)? = null
+    var onCommentAuthorClick: ((Comment) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CommentViewHolder {
         return CommentViewHolder(
@@ -22,7 +22,7 @@ class CommentAdapter: RecyclerView.Adapter<CommentViewHolder>() {
                     parent,
                     false
                 ),
-            onCommentAuthor
+            onCommentAuthorClick
         )
     }
 
