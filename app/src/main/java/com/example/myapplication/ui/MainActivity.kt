@@ -1,7 +1,7 @@
 package com.example.myapplication.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.R
 import com.example.myapplication.ui.home.HomeFragment
 import kotlinx.android.synthetic.main.activity_main.*
