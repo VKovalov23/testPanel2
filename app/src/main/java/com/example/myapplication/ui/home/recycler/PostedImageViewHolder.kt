@@ -11,7 +11,6 @@ import com.example.myapplication.ui.home.model.PostedItem
 import com.example.myapplication.utils.DoubleClickListener
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.posted_item.view.*
-import kotlinx.android.synthetic.main.posted_item.view.tvCommentTimeStamp
 
 class PostedImageViewHolder(
     override val containerView: View,
