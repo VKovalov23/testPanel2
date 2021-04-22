@@ -10,7 +10,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        beginTransaction()
         btFavorite.setOnClickListener {
+        }
+        btHome.setOnClickListener {
             beginTransaction()
         }
     }
@@ -19,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction()
             .replace(
                 R.id.vgFragmentContent,
-                HomeFragment()
+                HomeFragment.newInstance()
             )
             .commit()
     }

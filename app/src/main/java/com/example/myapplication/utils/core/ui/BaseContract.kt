@@ -4,12 +4,10 @@ interface BaseContract {
 
 
     interface View {
-        fun closeApp()
     }
 
 
     interface Presenter {
-        fun onLogOutClick()
     }
 }
 

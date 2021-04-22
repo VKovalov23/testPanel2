@@ -7,14 +7,14 @@ data class PostedItem(
     val likesCount: Int,
     val isLiked: Boolean,
     val timeStamp: String,
-    val title: String
+    val title: String,
+    val postId: String
 )
 
 data class UserProfile(
-    val photoUri: String,
-    val profileLink: String,
-    val profileName: String,
-    val profilePhoto: String
+    val id: String,
+    val name: String,
+    val photo: String
 )
 
 data class Comment(
